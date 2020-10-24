@@ -1,0 +1,151 @@
+//C:\Users\Ryano\Desktop\Image Data\Project 2
+
+//speed
+ffmpeg -ss 00:15:00.00 -i DragonA.mp4 -vframes 1 testSpeed.jpg
+
+//crop top left location: x:1560 y:200
+//crop size w:107 h:33
+
+ffmpeg -ss 00:15:00.00 -i DragonA.mp4 -vf "crop=107:33:1560:200" -vframes 1 testSpeed.jpg
+
+ffmpeg -ss 00:15:00.00 -i DragonA.mp4 -t 00:09:00.00 -filter: "fps=5/1,crop=107:33:1560:200" framesSpeed/crop%05d.jpg
+
+convert framesSpeed/crop00001.jpg -threshold 50% processedSpeed/thresh00001.jpg
+//for all
+convert framesSpeed/*.jpg -threshold 50% processedSpeed/thresh%05d.jpg
+
+tesseract processedSpeed/thresh00001.jpg outputSpeed --psm 13 digits
+
+//make sure to edit in notepad ++ to only have file names
+dir processedSpeed\thresh*.jpg > inputSpeed.txt
+tesseract inputSpeed.txt outputSpeed --psm 13
+
+///////////////////////////////////////////////////////////////////////
+//altitude
+
+ffmpeg -ss 00:15:00.00 -i DragonA.mp4 -vframes 1 testAlt.jpg
+
+//crop top left location: x:1766 y:200
+//crop size w:78 h:31
+
+ffmpeg -ss 00:15:00.00 -i DragonA.mp4 -vf "crop=78:31:1766:200" -vframes 1 testAlt.jpg
+
+ffmpeg -ss 00:15:00.00 -i DragonA.mp4 -t 00:09:00.00 -filter: "fps=5/1,crop=78:31:1766:200" framesAlt/crop%05d.jpg
+
+convert framesAlt/crop00001.jpg -threshold 50% processedAlt/thresh00001.jpg
+//for all
+convert framesAlt/*.jpg -threshold 50% processedAlt/thresh%05d.jpg
+
+tesseract processedAlt/thresh02366.jpg outputAlttest --psm 13 digits
+
+//make sure to edit in notepad ++ to only have file names
+dir processedAlt\thresh*.jpg > inputAlt.txt
+tesseract inputAlt.txt outputAlt --psm 13 digits
+
+////////////////////////////////////////////////////////////////////////
+//sports ball
+
+ffmpeg -ss 00:00:00.00 -i SportsBall.mp4 -vframes 1 testSB.jpg
+
+////////////////////////////////////////////////////title
+//crop top left location: x:175 y:655
+//crop size w:87 h:19
+
+//test crop title
+ffmpeg -ss 00:04:43.00 -i SportsBall.mp4 -vf "crop=87:19:175:655" -vframes 1 testSBTitle.jpg
+//crop all titles
+ffmpeg -ss 00:00:00.00 -i SportsBall.mp4 -t 00:14:10.00 -filter: "fps=1/1, crop=87:19:175:655" framesSB/title/crop%05d.jpg
+
+//test process title
+convert framesSB/title/crop00001.jpg -threshold 50% processedSB/title/thresh00001.jpg
+
+//test read title
+tesseract processedSB/title/thresh00001.jpg outputSBtitle --psm 13
+
+//process all titles
+convert framesSB/title/*.jpg -threshold 50% processedSB/title/thresh%05d.jpg
+
+//read all files
+dir processedSB\title\thresh*.jpg > inputSBTitle.txt
+tesseract inputSBTitle.txt outputSBTitle --psm 13 
+
+
+//////////////////////////////////////////////////////info
+//crop top left location: x:243 y:650
+//crop size w:590 h:27
+
+//look at frame
+ffmpeg -ss 00:00:22.00 -i SportsBall.mp4 -vframes 1 testSB.jpg
+
+//test crop info
+ffmpeg -ss 00:00:22.00 -i SportsBall.mp4 -vf "crop=590:27:243:650" -vframes 1 testSBInfo.jpg
+//crop all info
+ffmpeg -ss 00:00:00.00 -i SportsBall.mp4 -t 00:14:10.00 -filter: "fps=1/1, crop=590:27:243:650" framesSB/info/crop%05d.jpg
+
+//test process info
+convert framesSB/info/crop00001.jpg -threshold 40% processedSB/info/thresh00001.jpg
+
+//test read info
+tesseract processedSB/info/thresh00001.jpg outputSBInfo --psm 13
+
+//process all info
+convert framesSB/info/*.jpg -threshold 40% processedSB/info/thresh%05d.jpg
+
+//read all info
+dir processedSB\info\thresh*.jpg > inputSBInfo.txt
+tesseract inputSBInfo.txt outputSBInfo --psm 13 
+
+
+//////////////////////////////////////////////////////text
+//crop top left location: x:242 y:675
+//crop size w:596 h:25
+
+//look at frame
+ffmpeg -ss 00:04:27.00 -i SportsBall.mp4 -vframes 1 testSBText.jpg
+
+
+//test crop text
+ffmpeg -ss 00:00:00.00 -i SportsBall.mp4 -vf "crop=596:25:242:675" -vframes 1 testSBText.jpg
+//crop all text
+ffmpeg -ss 00:00:00.00 -i SportsBall.mp4 -t 00:14:10.00 -filter: "fps=1/1, crop=596:25:242:675" framesSB/text/crop%05d.jpg
+
+//test process text
+convert framesSB/text/crop00001.jpg -threshold 50% processedSB/text/thresh00001.jpg
+
+//test read text
+tesseract processedSB/text/thresh00001.jpg outputSBText --psm 13
+
+//process all text
+convert framesSB/text/*.jpg -threshold 50% processedSB/text/thresh%05d.jpg
+
+//read all text
+dir processedSB\text\thresh*.jpg > inputSBText.txt
+tesseract inputSBText.txt outputSBText --psm 13 
+
+/////////////////////////////////////////////////////////////////////
+//6:56 9:42
+
+//look at frame
+ffmpeg -ss 00:06:56.00 -i SportsBall.mp4 -vframes 1 testScore.jpg
+
+
+//test crop text
+ffmpeg -ss 00:06:56.00 -i SportsBall.mp4 -vf "crop=380:23:243:650" -vframes 1 testScore.jpg
+//crop all text
+ffmpeg -ss 00:06:56.00 -i SportsBall.mp4 -t 00:02:46.00 -filter: "fps=1/1, crop=380:23:243:650" framesSB/score/crop%05d.jpg
+
+//test process text
+convert framesSB/score/crop00001.jpg -threshold 60% processedSB/score/thresh00001.jpg
+
+//test read text
+tesseract processedSB/score/thresh00001.jpg outputSBScore --psm 13
+
+//process all text
+convert framesSB/score/*.jpg -threshold 60% processedSB/score/thresh%05d.jpg
+
+//read all text
+dir processedSB\score\thresh*.jpg > inputSBScore.txt
+tesseract inputSBScore.txt outputSBScore --psm 13 
+
+
+
