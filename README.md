@@ -15,6 +15,8 @@ These projects were created using R version 3.6.1, Python version 3.7.3, and Tes
 
 **Senior Capstone: Computer Science**: Reviews, practices, and explores main concepts in the field of computer science. We dove deep into cutting edge reinforcement learning research on top of approaching unique computer science problems to develop creative solutions.  
 
+**Computer Science Research**: Researched Meta-Learning using Reptile and MAML algorithms. We used these meta learning algorithms with an evolutionary strategy to enable reinforcement learning algorithms to learn more quickly with significantly less data or iterations.
+
 [Comment]: <> "a"
 ## Acknowledgments
 - Professor Ryan Yates and Wei Hu were the instructors for these class projects
