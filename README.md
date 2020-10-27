@@ -1,9 +1,6 @@
 # Class Projects
 A few coding exercises and projects from Houghton College.
 
-## Prerequisites
-These projects were created using R version 3.6.1, Python version 3.7.3, and Tesseract version 3.05.00dev, and ffmpeg version git-2020-01-15-0dc0837
-
 ## Classes
 **Comutational Statistics**: Computational statistics course introduces computational methods to solve statistical problems. The topics will include: classical tests, statistical modeling, regression, analysis of variance an covariance, analysis of count data and proportion data,time series analysis, survival analysis, Monte Carlo methods.
 
